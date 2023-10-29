@@ -1,22 +1,18 @@
 version: 0.0
 os: linux
 files:
-  - source: /
+  - source: ./publish.zip
     destination: /var/www/games-api
 hooks:
   BeforeInstall:
     - location: scripts/before-install.sh
       timeout: 300
-      runas: ec2-user
   AfterInstall:
     - location: scripts/after-install.sh
       timeout: 300
-      runas: ec2-user
   ApplicationStart:
     - location: scripts/application-start.sh
       timeout: 300
-      runas: ec2-user
   ApplicationStop:
     - location: scripts/application-stop.sh
       timeout: 300
-      runas: ec2-user
