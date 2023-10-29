@@ -2,11 +2,8 @@ version: 0.0
 os: linux
 files:
   - source: ./publish.zip
-    destination: /var/www/games-api
+    destination: /home/ec2-user/games-api
 hooks:
-  BeforeInstall:
-    - location: scripts/before-install.sh
-      timeout: 300
   AfterInstall:
     - location: scripts/after-install.sh
       timeout: 300
