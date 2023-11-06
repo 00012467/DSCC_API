@@ -1,15 +1,20 @@
 version: 0.0
 os: linux
 files:
-  - source: publish.zip
-    destination: /home/ec2-user/games-api
+  - source: workingapi/
+    destination: /var/www
+  - source: scripts/webapi.service
+    destination: /etc/systemd/system
 hooks:
-  AfterInstall:
-    - location: scripts/after-install.sh
+  BeforeInstall:
+    - location: scripts/before-install.sh
       timeout: 300
-  ApplicationStart:
-    - location: scripts/application-start.sh
-      timeout: 300
+      runas: root
   ApplicationStop:
     - location: scripts/application-stop.sh
       timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/application-start.sh
+      timeout: 300
+      runas: root
